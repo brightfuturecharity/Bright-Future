@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future Charity | Dignity Restored</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        
+        .hero-bg { 
+            background: linear-gradient(rgba(6, 78, 59, 0.85), rgba(6, 78, 59, 0.98)), 
+            url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .quote-section {
+            background: linear-gradient(rgba(2, 44, 34, 0.8), rgba(2, 44, 34, 0.8)), 
+            url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-emerald-950 text-emerald-50 px-6 py-2.5 flex justify-between items-center text-[10px] font-bold tracking-widest uppercase">
+        <div class="flex gap-6">
+            <span><i class="fas fa-envelope text-emerald-400 mr-2"></i> brightfuturecharity8@gmail.com</span>
+            <span><i class="fab fa-whatsapp text-emerald-400 mr-2"></i> +62 895-2022-5851</span>
+        </div>
+        <div class="hidden md:block opacity-70">NPO Reg: NPO-2023-4921-PK</div>
+    </nav>
+
+    <header class="hero-bg min-h-screen flex flex-col items-center justify-center py-24 px-4">
+        <div class="text-center mb-16 text-white max-w-4xl">
+            <h1 class="text-6xl md:text-9xl font-black mb-6 tracking-tighter drop-shadow-2xl">Bright Future</h1>
+            <p class="text-xl md:text-2xl text-emerald-100 italic font-light">"Empowering lives, restoring dignity, one child at a time."</p>
+        </div>
+
+        <div class="bg-white rounded-[4rem] shadow-2xl p-8 md:p-14 w-full max-w-2xl border border-white/20">
+            <div class="flex justify-center gap-4 mb-10 bg-slate-100 p-2 rounded-3xl">
+                <button onclick="switchTab('local')" id="tab-local" class="flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-wider bg-emerald-600 text-white shadow-xl transition-all">Pakistan</button>
+                <button onclick="switchTab('intl')" id="tab-intl" class="flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-wider text-slate-400 transition-all">International</button>
+            </div>
+
+            <div id="methods-grid" class="grid grid-cols-2 gap-4 mb-10"></div>
+
+            <div id="method-details" class="mb-8 p-6 bg-emerald-50 rounded-[2rem] border-2 border-emerald-100 hidden">
+                <p id="detail-text" class="text-xs text-emerald-900 font-mono leading-relaxed"></p>
+            </div>
+
+            <div class="space-y-4 pt-10 border-t border-slate-100">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="d-name" placeholder="Full Name" class="p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="text" id="d-country" placeholder="Country" class="p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <input type="number" id="d-amount" placeholder="Donation Amount" class="w-full p-5 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none">
+                
+                <button onclick="handleDonation()" class="w-full bg-emerald-600 text-white font-black py-6 rounded-3xl shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-widest">
+                    Confirm Pledge & Receipt
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-black text-emerald-900 mb-4">Stories of Change</h2>
+            <div class="w-24 h-2 bg-emerald-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Sector 1: Education (FIXED VISIBLE IMAGE) -->
+            <div class="group bg-white rounded-[3.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Education Sector">
+                    <div class="absolute top-6 left-6 bg-emerald-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase">Education</div>
+                </div>
+                <div class="p-10">
+                    <h3 class="text-2xl font-black text-emerald-900 mb-4">Sarah's New Chapter</h3>
+                    <p class="text-slate-500 leading-relaxed">Sarah is now back in school with all fees and books covered, ensuring she has the tools to build a bright future.</p>
+                </div>
+            </div>
+
+            <!-- Sector 2: Health -->
+            <div class="group bg-white rounded-[3.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1576089172869-4f5f6f315620?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-6 left-6 bg-blue-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase">Healthcare</div>
+                </div>
+                <div class="p-10">
+                    <h3 class="text-2xl font-black text-emerald-900 mb-4">Punjab Health Camp</h3>
+                    <p class="text-slate-500 leading-relaxed">Providing free screenings and vital medical aid to over 400 rural laborers in Punjab.</p>
+                </div>
+            </div>
+
+            <!-- Sector 3: Clean Water -->
+            <div class="group bg-white rounded-[3.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-6 left-6 bg-cyan-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase">Clean Water</div>
+                </div>
+                <div class="p-10">
+                    <h3 class="text-2xl font-black text-emerald-900 mb-4">Thar Desert Wells</h3>
+                    <p class="text-slate-500 leading-relaxed">Solar-powered pumps bringing safe drinking water to remote villages for the first time.</p>
+                </div>
+            </div>
+
+            <!-- Sector 4: Emergency Relief (FIXED VISIBLE IMAGE) -->
+            <div class="group bg-white rounded-[3.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Emergency Relief">
+                    <div class="absolute top-6 left-6 bg-rose-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase">Emergency Relief</div>
+                </div>
+                <div class="p-10">
+                    <h3 class="text-2xl font-black text-emerald-900 mb-4">Crisis Support</h3>
+                    <p class="text-slate-500 leading-relaxed">Rapid distribution of food packs and survival kits to families during floods and harsh winters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparent Founder Quote -->
+    <section class="quote-section relative py-48 px-6 text-white text-center">
+        <div class="max-w-4xl mx-auto relative z-10 glass-card p-16 md:p-24 rounded-[5rem]">
+            <i class="fas fa-quote-left text-5xl text-emerald-400 mb-10 block"></i>
+            <h2 class="text-3xl md:text-5xl font-light italic leading-snug mb-12">
+                "Your charity is not just a donation; it's a lifeline for a family that has lost all hope."
+            </h2>
+            <div class="w-20 h-1 bg-emerald-400 mx-auto mb-10"></div>
+            <p class="font-black tracking-[0.3em] uppercase text-sm">Usama Bilal — Director</p>
+        </div>
+    </section>
+
+    <footer class="bg-white pt-32 pb-12 px-8 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
+            <div>
+                <h3 class="text-3xl font-black text-emerald-900 mb-6">Bright Future</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Official NGO dedicated to restoring dignity through transparent projects across Pakistan.</p>
+                <div class="flex gap-4">
+                    <a href="https://wa.me/6289520225851" class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-emerald-900 hover:bg-emerald-600 hover:text-white transition-all"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="bg-slate-50 p-8 rounded-[3rem] border border-slate-100">
+                <h4 class="font-black text-emerald-900 mb-4 uppercase text-xs tracking-widest">NPO Verification</h4>
+                <p class="text-lg font-black text-emerald-700">NPO-2023-4921-PK</p>
+            </div>
+            <div>
+                <h4 class="font-black text-emerald-900 mb-6 uppercase text-xs tracking-widest">Reach Out</h4>
+                <p class="text-sm text-slate-500 mb-2">brightfuturecharity8@gmail.com</p>
+                <p class="text-sm text-slate-500">+62 895-2022-5851</p>
+            </div>
+        </div>
+        <p class="text-center text-[10px] font-black text-slate-300 uppercase tracking-widest">© 2026 Bright Future Charity</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = { databaseURL: "https://bright-future-charity-default-rtdb.firebaseio.com" };
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const methodsRef = ref(db, 'methods');
+
+        let dataStore = [];
+        window.currentType = 'local';
+
+        onValue(methodsRef, (snap) => {
+            const raw = snap.val();
+            dataStore = raw ? Object.entries(raw) : [];
+            renderUI();
+        });
+
+        window.renderUI = function() {
+            const container = document.getElementById('methods-grid');
+            const filtered = dataStore.filter(([id, m]) => m.type === window.currentType);
+            
+            if(filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-2 text-center py-8 text-slate-400 italic">No ${window.currentType} methods found.</div>`;
+            } else {
+                container.innerHTML = filtered.map(([id, m]) => `
+                    <div onclick="selectMethod('${id}')" class="p-6 border-2 rounded-3xl cursor-pointer transition-all hover:border-emerald-500 bg-white shadow-sm">
+                        <p class="text-[10px] font-black uppercase text-emerald-600 mb-1">${m.name}</p>
+                        <p class="text-xs font-bold text-slate-700 truncate">${m.accNo}</p>
+                    </div>
+                `).join('');
+            }
+        };
+
+        window.switchTab = function(t) {
+            window.currentType = t;
+            const lBtn = document.getElementById('tab-local');
+            const iBtn = document.getElementById('tab-intl');
+            
+            if(t === 'local') {
+                lBtn.className = "flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-wider bg-emerald-600 text-white shadow-xl transition-all";
+                iBtn.className = "flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-wider text-slate-400 transition-all";
+            } else {
+                iBtn.className = "flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-wider bg-emerald-600 text-white shadow-xl transition-all";
+                lBtn.className = "flex-1 py-4 rounded-2xl font-black text-sm uppercase tracking-wider text-slate-400 transition-all";
+            }
+            renderUI();
+        };
+
+        window.selectMethod = function(id) {
+            const method = dataStore.find(([mid]) => mid === id)[1];
+            document.getElementById('method-details').classList.remove('hidden');
+            document.getElementById('detail-text').innerHTML = `
+                <strong>Recipient:</strong> ${method.holder}<br>
+                <strong>Number:</strong> ${method.accNo}<br>
+                ${method.iban ? '<strong>IBAN:</strong> ' + method.iban : ''}
+            `;
+        };
+
+        window.handleDonation = function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("BRIGHT FUTURE CHARITY RECEIPT", 20, 20);
+            doc.text(`Donor: ${document.getElementById('d-name').value}`, 20, 40);
+            doc.text(`Amount: ${document.getElementById('d-amount').value}`, 20, 50);
+            doc.text("NPO Reg: NPO-2023-4921-PK", 20, 70);
+            doc.save("Pledge_Receipt.pdf");
+            window.open(`https://wa.me/6289520225851?text=New Donation Pledge!`, "_blank");
+        };
+    </script>
+</body>
+</html>
