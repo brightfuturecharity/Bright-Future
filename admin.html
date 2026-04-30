@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div id="login" class="max-w-sm mx-auto mt-20 bg-white p-8 rounded-2xl shadow-xl">
+        <h2 class="text-2xl font-bold mb-4">Admin Login</h2>
+        <input type="password" id="pin" placeholder="Enter PIN" class="w-full p-3 border rounded mb-4">
+        <button onclick="checkPin()" class="w-full bg-black text-white py-3 rounded font-bold">Access Portal</button>
+    </div>
+
+    <div id="dashboard" class="max-w-4xl mx-auto hidden">
+        <div class="bg-white p-8 rounded-3xl shadow-lg">
+            <h1 class="text-3xl font-bold mb-8">Management Portal</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10 p-6 bg-green-50 rounded-2xl">
+                <input type="text" id="name" placeholder="Method Name" class="p-3 border rounded">
+                <input type="text" id="val" placeholder="Account Info" class="p-3 border rounded">
+                <select id="type" class="p-3 border rounded">
+                    <option value="local">Local (Pakistan)</option>
+                    <option value="intl">International</option>
+                </select>
+                <button onclick="add()" class="bg-green-600 text-white font-bold rounded">Add New Method</button>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="font-bold text-gray-500">Current Methods</h3>
+                <div id="list" class="space-y-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPin() {
+            if(document.getElementById('pin').value === '1224') {
+                document.getElementById('login').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                render();
+            } else { alert("Wrong PIN"); }
+        }
+
+        let data = JSON.parse(localStorage.getItem('bfc_methods')) || [];
+
+        function render() {
+            const list = document.getElementById('list');
+            list.innerHTML = data.map((m, i) => `
+                <div class="flex justify-between items-center p-4 bg-gray-50 rounded-xl border">
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase">[${m.type}]</span>
+                        <span class="ml-2 font-bold">${m.name}</span>: 
+                        <span class="text-green-700 font-mono">${m.val}</span>
+                    </div>
+                    <button onclick="del(${i})" class="text-red-500 font-bold hover:underline">Remove</button>
+                </div>
+            `).join('');
+            localStorage.setItem('bfc_methods', JSON.stringify(data));
+        }
+
+        function add() {
+            const n = document.getElementById('name').value;
+            const v = document.getElementById('val').value;
+            const t = document.getElementById('type').value;
+            if(n && v) {
+                data.push({name: n, val: v, type: t});
+                render();
+                document.getElementById('name').value = '';
+                document.getElementById('val').value = '';
+            }
+        }
+
+        function del(i) {
+            data.splice(i, 1);
+            render();
+        }
+    </script>
+</body>
+</html>
