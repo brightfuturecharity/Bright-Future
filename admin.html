@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC Admin | Secure Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Blur effect for unauthorized access */
+        .locked { filter: blur(20px); pointer-events: none; user-select: none; }
+        
+        #login-overlay {
+            background: rgba(6, 78, 59, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen relative">
+
+    <!-- PIN Overlay -->
+    <div id="login-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-6">
+        <div class="bg-white p-10 rounded-[3rem] shadow-2xl w-full max-w-md text-center">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2 class="text-2xl font-black text-emerald-900 mb-2">Admin Access</h2>
+            <p class="text-slate-500 text-sm mb-8">Enter your 4-digit security PIN to manage Bright Future Charity methods.</p>
+            
+            <input type="password" id="admin-pin" maxlength="4" placeholder="••••" 
+                   class="w-full text-center text-4xl tracking-[1em] p-5 bg-slate-50 rounded-2xl ring-2 ring-slate-100 outline-none focus:ring-emerald-500 mb-6">
+            
+            <button onclick="checkPin()" class="w-full bg-emerald-600 text-white font-bold py-5 rounded-2xl shadow-lg hover:bg-emerald-700 transition-all uppercase tracking-widest">
+                Verify Identity
+            </button>
+            <p id="error-msg" class="text-rose-500 text-xs font-bold mt-4 hidden">Invalid PIN. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Content (Locked by default) -->
+    <div id="admin-content" class="locked">
+        <nav class="bg-emerald-950 text-white p-6 shadow-xl">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-xl font-bold tracking-tighter">BFC ADMIN <span class="text-emerald-400">PANEL</span></h1>
+                <button onclick="location.reload()" class="text-[10px] bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 uppercase font-black tracking-widest">Logout</button>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Entry Form -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200">
+                        <h2 class="text-xl font-black text-emerald-900 mb-6">Add Method</h2>
+                        <div class="space-y-4">
+                            <select id="m-type" class="w-full p-4 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none">
+                                <option value="local">Pakistan (Local)</option>
+                                <option value="intl">International</option>
+                            </select>
+                            <input type="text" id="m-name" placeholder="Bank Name" class="w-full p-4 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none">
+                            <input type="text" id="m-holder" placeholder="Account Holder" class="w-full p-4 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none">
+                            <input type="text" id="m-no" placeholder="Account Number" class="w-full p-4 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none">
+                            <input type="text" id="m-iban" placeholder="IBAN (Optional)" class="w-full p-4 bg-slate-50 rounded-2xl ring-1 ring-slate-200 outline-none">
+                            <button onclick="addMethod()" class="w-full bg-emerald-600 text-white font-bold py-4 rounded-2xl hover:bg-emerald-700 transition-all">Save Method</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List View -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200 min-h-[400px]">
+                        <h2 class="text-xl font-black text-emerald-900 mb-6">Active Methods</h2>
+                        <div id="admin-list" class="space-y-3"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = { databaseURL: "https://bright-future-charity-default-rtdb.firebaseio.com" };
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const methodsRef = ref(db, 'methods');
+
+        // Security logic
+        const SECURE_PIN = "1234"; // CHANGE THIS PIN TO YOUR DESIRED CODE
+
+        window.checkPin = function() {
+            const entered = document.getElementById('admin-pin').value;
+            if(entered === SECURE_PIN) {
+                document.getElementById('login-overlay').classList.add('hidden');
+                document.getElementById('admin-content').classList.remove('locked');
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+                document.getElementById('admin-pin').value = '';
+            }
+        };
+
+        window.addMethod = function() {
+            const data = {
+                type: document.getElementById('m-type').value,
+                name: document.getElementById('m-name').value,
+                holder: document.getElementById('m-holder').value,
+                accNo: document.getElementById('m-no').value,
+                iban: document.getElementById('m-iban').value
+            };
+            if(data.name && data.accNo) {
+                push(methodsRef, data);
+                document.querySelectorAll('input:not(#admin-pin)').forEach(i => i.value = '');
+            }
+        };
+
+        window.deleteMethod = function(id) {
+            if(confirm("Delete this method?")) {
+                remove(ref(db, `methods/${id}`));
+            }
+        };
+
+        onValue(methodsRef, (snap) => {
+            const list = document.getElementById('admin-list');
+            const data = snap.val();
+            if(!data) { list.innerHTML = `<p class="text-slate-400 italic">No methods found.</p>`; return; }
+
+            list.innerHTML = Object.entries(data).map(([id, m]) => `
+                <div class="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100">
+                    <div>
+                        <span class="text-[9px] font-black uppercase px-3 py-1 rounded-full ${m.type === 'local' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'} mb-2 inline-block">${m.type}</span>
+                        <h4 class="font-bold text-slate-800">${m.name}</h4>
+                        <p class="text-xs text-slate-500">${m.accNo} (${m.holder})</p>
+                    </div>
+                    <button onclick="deleteMethod('${id}')" class="text-rose-500 p-3 hover:bg-rose-50 rounded-xl transition-all"><i class="fas fa-trash-alt"></i></button>
+                </div>
+            `).join('');
+        });
+    </script>
+</body>
+</html>
