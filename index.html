@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future Charity | Dignity Restored</title>
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { 
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+            url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .sector-card img { transition: transform 0.5s ease; }
+        .sector-card:hover img { transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Hero Section -->
+    <header class="hero-gradient h-[75vh] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Bright Future Charity</h1>
+            <p class="text-xl md:text-2xl font-light mb-8">Dignity Restored, Futures Rebuilt. Join our mission to empower vulnerable communities across Pakistan.</p>
+            <a href="#donate" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-full transition shadow-2xl inline-block">Donate Now</a>
+        </div>
+    </header>
+
+    <!-- Impact Sectors Section -->
+    <section class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Core Sectors</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Direct action in the areas where it is needed most.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Education -->
+            <div class="sector-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da0762ce?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Education">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-3 text-green-700">1. Education</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We have built 2 primary schools in rural sectors, ensuring quality education and stable futures for local children.</p>
+                </div>
+            </div>
+            <!-- Healthcare -->
+            <div class="sector-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Healthcare">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-3 text-green-700">2. Health Care</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Providing vital medical supplies and mobile health clinics to remote regions across the country.</p>
+                </div>
+            </div>
+            <!-- Orphan Care -->
+            <div class="sector-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1484665754804-74b091211472?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Orphan Care">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-3 text-green-700">3. Orphan Care</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Holistic support including shelter, nutrition, and emotional guidance for children without guardians.</p>
+                </div>
+            </div>
+            <!-- Food Relief -->
+            <div class="sector-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                <div class="overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Emergency Food">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-3 text-green-700">4. Emergency Food</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Swift response to hunger crises with nutrient-rich food packs for families in extreme poverty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories of Hope Section -->
+    <section class="bg-gray-100 py-20 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?auto=format&fit=crop&w=800&q=80" class="rounded-3xl shadow-2xl" alt="Amina's Story">
+            </div>
+            <div class="md:w-1/2">
+                <h4 class="text-green-600 font-bold tracking-widest uppercase text-sm mb-4">Stories of Hope</h4>
+                <h2 class="text-4xl font-bold mb-8 text-gray-900">Dignity Restored, Futures Rebuilt</h2>
+                <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                    <p>When ten-year-old Amina received her first school uniform, it wasn't just fabric. It was a promise. Before Bright Future intervened, Amina spent her mornings fetching water from a well three miles away. Education felt like a luxury reserved for others.</p>
+                    <p>Thanks to a community well installed by our donors and a scholarship from our education fund, Amina now walks to school instead of the well. She holds her books with profound pride, her eyes sparkling with the ambition to become a teacher.</p>
+                    <p>We believe charity is not about pity; it's about providing the tools for empowerment. Every child possesses immense potential.</p>
+                    <blockquote class="bg-white p-8 border-l-8 border-green-600 shadow-sm italic rounded-r-2xl">
+                        "She told me she wants to build a school for our village one day. I believe her."
+                        <span class="block text-base font-bold mt-4 not-italic text-gray-900">— AMINA'S MOTHER</span>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="py-20 px-4 max-w-5xl mx-auto">
+        <div class="bg-white rounded-[2.5rem] shadow-2xl p-10 md:p-16 border border-gray-50">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Support Our Mission</h2>
+            <p class="text-center text-gray-500 mb-10">Select your region and preferred payment method.</p>
+            
+            <div class="flex justify-center gap-6 mb-12">
+                <button onclick="showTab('pakistan')" id="btn-pak" class="px-8 py-3 rounded-full font-bold border-2 border-green-600 bg-green-600 text-white transition-all shadow-lg">Pakistan (PKR)</button>
+                <button onclick="showTab('intl')" id="btn-intl" class="px-8 py-3 rounded-full font-bold border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-all">International (USD)</button>
+            </div>
+
+            <!-- Pakistan Methods -->
+            <div id="pakistan" class="tab-content active space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <i class="fas fa-mobile-alt text-2xl text-green-600 mb-3"></i>
+                        <h4 class="font-bold text-green-900">JazzCash</h4>
+                        <p class="text-xl font-mono my-2" id="disp-jazz">03407849646</p>
+                        <span class="text-xs text-gray-500 uppercase font-semibold" id="disp-title1">Muhammad Ahmad</span>
+                    </div>
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <i class="fas fa-wallet text-2xl text-green-600 mb-3"></i>
+                        <h4 class="font-bold text-green-900">EasyPaisa</h4>
+                        <p class="text-xl font-mono my-2" id="disp-easy">03407849646</p>
+                        <span class="text-xs text-gray-500 uppercase font-semibold" id="disp-title2">Muhammad Ahmad</span>
+                    </div>
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <i class="fas fa-university text-2xl text-green-600 mb-3"></i>
+                        <h4 class="font-bold text-green-900" id="disp-bank-name">Meezan Bank</h4>
+                        <p class="text-[10px] font-mono break-all my-2" id="disp-iban">PK72MEZN00096101037583</p>
+                        <span class="text-xs text-gray-500 uppercase font-semibold" id="disp-title3">Muhammad Ahmad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- International Methods -->
+            <div id="intl" class="tab-content space-y-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <p class="font-bold text-blue-800 text-sm">USDT (TRC20)</p>
+                        <p class="text-[9px] font-mono break-all text-gray-600 mt-2" id="disp-usdt">Update via Admin</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <p class="font-bold text-blue-800 text-sm">Bitcoin (BTC)</p>
+                        <p class="text-[9px] font-mono break-all text-gray-600 mt-2" id="disp-btc">Update via Admin</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <p class="font-bold text-blue-800 text-sm">Ethereum (ETH)</p>
+                        <p class="text-[9px] font-mono break-all text-gray-600 mt-2" id="disp-eth">Update via Admin</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <p class="font-bold text-blue-800 text-sm">Payoneer</p>
+                        <p class="text-[9px] text-gray-600 mt-2" id="disp-payoneer">Update via Admin</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <p class="font-bold text-blue-800 text-sm">PayPal</p>
+                        <p class="text-[9px] text-gray-600 mt-2" id="disp-paypal">Update via Admin</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <p class="font-bold text-blue-800 text-sm">Intl Wire</p>
+                        <p class="text-[9px] text-gray-600 mt-2" id="disp-wire">Update via Admin</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pledge Form -->
+            <div class="mt-12 space-y-5 border-t pt-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <input type="text" id="donor_name" placeholder="Full Name" class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none" required>
+                    <input type="email" id="donor_email" placeholder="Email Address" class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none" required>
+                </div>
+                <input type="number" id="donor_amount" placeholder="Pledge Amount" class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none" required>
+                <textarea id="donor_message" placeholder="Leave a message (optional)" class="w-full p-4 rounded-xl border border-gray-200 h-24 focus:ring-2 focus:ring-green-500 outline-none"></textarea>
+                
+                <p class="text-center text-sm text-gray-500">A PDF receipt will be generated and WhatsApp will open for confirmation.</p>
+                
+                <button onclick="sendToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-5 rounded-2xl shadow-xl transition-all flex items-center justify-center gap-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    Confirm Pledge & Get Receipt
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="bg-gray-900 text-white py-20 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Complete Transparency</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mt-16">
+                <div><i class="fas fa-hand-holding-usd text-4xl text-green-500 mb-6"></i><p class="text-sm">How Money is Spent</p></div>
+                <div><i class="fas fa-id-card text-4xl text-green-500 mb-6"></i><p class="text-sm">Registered NPO-2023-4921-PK</p></div>
+                <div><i class="fas fa-search-dollar text-4xl text-green-500 mb-6"></i><p class="text-sm">Independent Audits</p></div>
+                <div><i class="fas fa-user-shield text-4xl text-green-500 mb-6"></i><p class="text-sm">Secure Transactions</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-16 px-4 text-center">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-600 mb-12">
+            <p><strong>Karachi</strong><br>45 Shahrah-e-Faisal, 75400</p>
+            <p><strong>Lahore</strong><br>12 Main Boulevard, Gulberg, 54660</p>
+            <p><strong>Islamabad</strong><br>F-8 Markaz, 44000</p>
+        </div>
+        <p class="text-green-600 font-bold mb-4">brightfuturecharity8@gmail.com</p>
+        <p class="text-gray-400 text-[10px]">© 2026 Bright Future Charity. All rights reserved.</p>
+    </footer>
+
+    <!-- Admin Portal -->
+    <button onclick="openAdmin()" class="fixed bottom-4 right-4 bg-white/50 p-2 rounded text-[9px] text-gray-400 hover:text-gray-900 transition">ADMIN</button>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const pakBtn = document.getElementById('btn-pak');
+            const intlBtn = document.getElementById('btn-intl');
+            if(tabId === 'pakistan') {
+                pakBtn.className = 'px-8 py-3 rounded-full font-bold border-2 border-green-600 bg-green-600 text-white shadow-lg';
+                intlBtn.className = 'px-8 py-3 rounded-full font-bold border-2 border-green-600 text-green-600';
+            } else {
+                intlBtn.className = 'px-8 py-3 rounded-full font-bold border-2 border-green-600 bg-green-600 text-white shadow-lg';
+                pakBtn.className = 'px-8 py-3 rounded-full font-bold border-2 border-green-600 text-green-600';
+            }
+        }
+
+        async function sendToWhatsApp() {
+            const { jsPDF } = window.jspdf;
+            const name = document.getElementById('donor_name').value;
+            const email = document.getElementById('donor_email').value;
+            const amount = document.getElementById('donor_amount').value;
+            const msg = document.getElementById('donor_message').value;
+            const date = new Date().toLocaleDateString('en-GB');
+            const receiptNo = "BFC-" + Math.floor(100000 + Math.random() * 900000);
+
+            if(!name || !amount || !email) {
+                alert("Please complete the form to generate your receipt.");
+                return;
+            }
+
+            // PDF Generation
+            const doc = new jsPDF();
+            doc.setFillColor(22, 101, 52); doc.rect(0, 0, 210, 40, 'F');
+            doc.setTextColor(255, 255, 255); doc.setFontSize(22); doc.text("BRIGHT FUTURE CHARITY", 20, 20);
+            doc.setFontSize(12); doc.text("Donation Receipt", 20, 30);
+            doc.setTextColor(40, 40, 40); doc.text(`No: ${receiptNo}`, 20, 55); doc.text(`Date: ${date}`, 140, 55);
+            doc.setFontSize(18); doc.text(`Thank you, ${name}!`, 20, 75);
+            doc.setFillColor(249, 250, 251); doc.rect(20, 100, 170, 30, 'F');
+            doc.setTextColor(21, 128, 61); doc.setFontSize(24); doc.text(`Pledged: PKR ${amount}`, 40, 120);
+            doc.setFontSize(10); doc.setTextColor(100, 100, 100);
+            doc.text(`Email: ${email}`, 20, 150); doc.text(`Status: Pledged (Awaiting Transfer)`, 20, 160);
+            doc.text(`Message: ${msg || "N/A"}`, 20, 170);
+            doc.save(`Receipt_${name}.pdf`);
+
+            // WhatsApp
+            const text = `Hello Bright Future Charity,\n\nI have pledged a donation.\n\n*Details:*\nName: ${name}\nAmount: ${amount}\nEmail: ${email}\nMessage: ${msg}\n\nI am sending my payment screenshot below.`;
+            window.open(`https://wa.me/9289520225851?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function openAdmin() {
+            let pin = prompt("Admin PIN:");
+            if(pin === "1224") {
+                let sec = prompt("Update 'PAK' or 'INTL'?").toUpperCase();
+                if(sec === 'PAK') {
+                    document.getElementById('disp-jazz').innerText = prompt("Jazz No:");
+                    document.getElementById('disp-easy').innerText = prompt("EasyPaisa No:");
+                    document.getElementById('disp-bank-name').innerText = prompt("Bank Name:");
+                    document.getElementById('disp-iban').innerText = prompt("IBAN:");
+                    let t = prompt("Title:");
+                    document.getElementById('disp-title1').innerText = t;
+                    document.getElementById('disp-title2').innerText = t;
+                    document.getElementById('disp-title3').innerText = t;
+                } else if(sec === 'INTL') {
+                    document.getElementById('disp-usdt').innerText = prompt("USDT:");
+                    document.getElementById('disp-btc').innerText = prompt("BTC:");
+                    document.getElementById('disp-eth').innerText = prompt("ETH:");
+                    document.getElementById('disp-payoneer').innerText = prompt("Payoneer:");
+                    document.getElementById('disp-paypal').innerText = prompt("PayPal:");
+                    document.getElementById('disp-wire').innerText = prompt("Wire:");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
