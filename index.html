@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future Charity | Dignity Restored</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80'); 
+            background-size: cover; background-position: center; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Hero & Donation Form -->
+    <header class="hero-gradient min-h-[90vh] flex flex-col items-center justify-center text-center text-white px-4 py-12">
+        <div class="max-w-4xl mb-12">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Bright Future Charity</h1>
+            <p class="text-xl font-light">Dignity Restored, Futures Rebuilt.</p>
+        </div>
+
+        <div id="donate" class="bg-white text-gray-900 rounded-[2rem] shadow-2xl p-8 md:p-12 w-full max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center">Support Our Mission</h2>
+            
+            <div class="flex justify-center gap-4 mb-8">
+                <button onclick="toggleType('local')" id="tab-local" class="px-6 py-2 rounded-full font-bold bg-green-600 text-white">Local (PKR)</button>
+                <button onclick="toggleType('intl')" id="tab-intl" class="px-6 py-2 rounded-full font-bold border border-gray-300">International</button>
+            </div>
+
+            <div id="payment-methods-display" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <!-- Methods loaded from LocalStorage -->
+            </div>
+
+            <div class="space-y-4 border-t pt-6">
+                <input type="text" id="donor_name" placeholder="Full Name" class="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500">
+                <input type="number" id="donor_amount" placeholder="Pledge Amount" class="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500">
+                <button onclick="handlePledge()" class="w-full bg-[#25D366] text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Confirm via WhatsApp
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4 Sectors Section -->
+    <section class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" class="h-48 w-full object-cover">
+                <div class="p-6"><h3 class="font-bold text-green-700">Education</h3><p class="text-sm text-gray-600 mt-2">Providing scholarships and building schools in rural sectors to secure stable futures.</p></div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" class="h-48 w-full object-cover">
+                <div class="p-6"><h3 class="font-bold text-green-700">Healthcare</h3><p class="text-sm text-gray-600 mt-2">Delivering vital medical supplies and mobile clinics to remote regions across Pakistan.</p></div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border">
+                <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" class="h-48 w-full object-cover">
+                <div class="p-6"><h3 class="font-bold text-green-700">Clean Water</h3><p class="text-sm text-gray-600 mt-2">Installing community wells to ensure every village has access to safe, drinkable water.</p></div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border">
+                <img src="https://images.unsplash.com/photo-1484665754804-74b091211472?auto=format&fit=crop&w=600&q=80" class="h-48 w-full object-cover">
+                <div class="p-6"><h3 class="font-bold text-green-700">Orphan Care</h3><p class="text-sm text-gray-600 mt-2">Holistic support including shelter, nutrition, and emotional guidance for children.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories of Hope -->
+    <section class="py-20 bg-green-50 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">STORIES OF HOPE</h2>
+            <p class="text-green-700 font-semibold mb-12">Dignity Restored, Futures Rebuilt.</p>
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-8 items-center text-left">
+                <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=600&q=80" class="w-48 h-48 rounded-2xl object-cover border-4 border-green-100">
+                <div>
+                    <p class="text-lg text-gray-700 italic leading-relaxed mb-6">
+                        "When ten-year-old Amina received her first school uniform, it wasn't just fabric. It was a promise. Before Bright Future intervened, Amina spent her mornings fetching water from a well three miles away. Education felt like a luxury reserved for others..."
+                    </p>
+                    <p class="font-bold text-green-700">"She told me she wants to build a school for our village one day. I believe her."</p>
+                    <p class="text-sm text-gray-500">— AMINA'S MOTHER</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency -->
+    <section class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold">Complete Transparency</h2>
+            <p class="text-gray-500 mt-2">Trust is our most valued asset.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white border rounded-2xl text-center">
+                <h4 class="font-bold mb-4">How Your Money is Spent</h4>
+                <div class="space-y-4">
+                    <div class="text-left"><div class="flex justify-between text-xs mb-1"><span>Programs & Aid</span><span>82%</span></div><div class="w-full bg-gray-100 h-2 rounded-full"><div class="bg-green-500 h-2 rounded-full" style="width: 82%"></div></div></div>
+                    <div class="text-left"><div class="flex justify-between text-xs mb-1"><span>Operations</span><span>12%</span></div><div class="w-full bg-gray-100 h-2 rounded-full"><div class="bg-blue-500 h-2 rounded-full" style="width: 12%"></div></div></div>
+                    <div class="text-left"><div class="flex justify-between text-xs mb-1"><span>Fundraising</span><span>6%</span></div><div class="w-full bg-gray-100 h-2 rounded-full"><div class="bg-yellow-500 h-2 rounded-full" style="width: 6%"></div></div></div>
+                </div>
+            </div>
+            <div class="p-8 bg-white border rounded-2xl text-center">
+                <i class="fas fa-certificate text-green-600 text-3xl mb-4"></i>
+                <h4 class="font-bold mb-2">Registered Non-Profit</h4>
+                <p class="text-sm text-gray-500">Officially registered under the Societies Registration Act. Reg No: NPO-2023-4921-PK.</p>
+            </div>
+            <div class="p-8 bg-white border rounded-2xl text-center">
+                <i class="fas fa-shield-alt text-green-600 text-3xl mb-4"></i>
+                <h4 class="font-bold mb-2">Secure Transactions</h4>
+                <p class="text-sm text-gray-500">Bank-grade encryption for all online donations. Verified channels for transfers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="p-8 bg-gray-800 rounded-2xl">
+                <h3 class="text-2xl font-bold mb-4 text-green-400">Bright Future</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">A registered non-profit organization dedicated to empowering underserved communities in Pakistan through education, healthcare, clean water, and orphan care.</p>
+            </div>
+            <div class="p-8 bg-gray-800 rounded-2xl">
+                <h4 class="font-bold mb-4 uppercase tracking-widest text-xs text-gray-400">Our Offices</h4>
+                <div class="text-sm space-y-4 text-gray-300">
+                    <p>45 Shahrah-e-Faisal, Karachi, Sindh 75400</p>
+                    <p>12 Main Boulevard, Gulberg, Lahore, Punjab 54660</p>
+                    <p>F-8 Markaz, Islamabad, ICT 44000</p>
+                </div>
+            </div>
+            <div class="p-8 bg-gray-800 rounded-2xl">
+                <h4 class="font-bold mb-4 uppercase tracking-widest text-xs text-gray-400">Contact Us</h4>
+                <p class="text-sm text-gray-300">Email: brightfuturecharity8@gmail.com</p>
+                <p class="text-sm text-gray-300 mt-2">WhatsApp: +62 895-2022-5851</p>
+            </div>
+        </div>
+        <div class="text-center mt-20 text-gray-500 text-xs border-t border-gray-800 pt-8">
+            © 2026 Bright Future Charity. All rights reserved. NPO Reg: NPO-2023-4921-PK
+        </div>
+    </footer>
+
+    <script>
+        let methods = JSON.parse(localStorage.getItem('bfc_methods')) || [
+            { type: 'local', name: 'JazzCash', val: '03407849646' },
+            { type: 'local', name: 'EasyPaisa', val: '03407849646' },
+            { type: 'local', name: 'Meezan Bank', val: 'PK72MEZN00096101037583' },
+            { type: 'intl', name: 'USDT (TRC20)', val: 'TBRC82...' }
+        ];
+
+        let currentType = 'local';
+
+        function render() {
+            const container = document.getElementById('payment-methods-display');
+            container.innerHTML = methods.filter(m => m.type === currentType).map(m => `
+                <div class="p-4 bg-gray-50 border rounded-2xl text-center">
+                    <p class="text-[10px] uppercase font-bold text-gray-400">${m.name}</p>
+                    <p class="text-sm font-mono font-bold text-green-700">${m.val}</p>
+                </div>
+            `).join('');
+        }
+
+        function toggleType(t) {
+            currentType = t;
+            document.getElementById('tab-local').className = t === 'local' ? 'px-6 py-2 rounded-full font-bold bg-green-600 text-white' : 'px-6 py-2 rounded-full font-bold border border-gray-300';
+            document.getElementById('tab-intl').className = t === 'intl' ? 'px-6 py-2 rounded-full font-bold bg-green-600 text-white' : 'px-6 py-2 rounded-full font-bold border border-gray-300';
+            render();
+        }
+
+        function handlePledge() {
+            const n = document.getElementById('donor_name').value;
+            const a = document.getElementById('donor_amount').value;
+            if(!n || !a) return alert("Please fill details");
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text(`Bright Future Charity Receipt\nDonor: ${n}\nAmount: ${a}`, 20, 20);
+            doc.save('Receipt.pdf');
+            window.open(`https://wa.me/6289520225851?text=Pledge: ${n} - ${a}`, '_blank');
+        }
+
+        render();
+        // Sync check every 2 seconds for admin changes
+        setInterval(() => {
+            methods = JSON.parse(localStorage.getItem('bfc_methods')) || methods;
+            render();
+        }, 2000);
+    </script>
+</body>
+</html>
