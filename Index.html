@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bright Future Charity | Dignity Restored</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fraunces:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { primary: "#0f3d2e", secondary: "#c89b3c", muted: "#f3f1ec" },
+      fontFamily: { serif: ['Fraunces', 'serif'], sans: ['Inter', 'sans-serif'] }
+    }
+  }
+};
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .hero-bg { 
+    /* NEW HERO BACKGROUND IMAGE: Hopeful children */
+    background-image: linear-gradient(to bottom, rgba(15,61,46,0.8), rgba(15,61,46,0.9)), url('https://images.unsplash.com/photo-1599901763721-b4528f895513?q=80&w=2000');
+    background-size: cover; background-position: center;
+  }
+  .tab-active { background: #c89b3c !important; color: #0f3d2e !important; }
+  .floating-wa { position: fixed; bottom: 30px; right: 30px; z-index: 100; transition: transform 0.3s; background: #25d366; }
+  .floating-wa:hover { transform: scale(1.1); }
+</style>
+</head>
+<body class="bg-white font-sans text-gray-900">
+
+<a href="https://wa.me/6289520225851" target="_blank" class="floating-wa text-white p-4 rounded-full shadow-2xl flex items-center justify-center">
+    <i class="fab fa-whatsapp text-3xl"></i>
+</a>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b">
+    <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="font-serif font-bold text-2xl text-primary uppercase tracking-tighter">BRIGHT <span class="text-secondary">FUTURE</span></div>
+        <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest text-primary">
+            <a href="#about" class="hover:text-secondary">About</a>
+            <a href="#sectors" class="hover:text-secondary">Impact</a>
+            <a href="#donate" class="text-secondary underline decoration-2">Donate</a>
+            <a href="#contact" class="hover:text-secondary">Contact</a>
+            <a href="#admin" class="opacity-30">Admin</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-bg h-[75vh] flex items-center justify-center text-center text-white px-4 pt-20">
+    <div class="max-w-4xl">
+        <span class="text-secondary uppercase tracking-[0.3em] font-bold text-xs mb-4 block italic">Serving with Integrity</span>
+        <h1 class="font-serif text-5xl md:text-8xl mb-6 italic leading-tight">Dignity Restored</h1>
+        <p class="text-xl opacity-90 italic max-w-2xl mx-auto mb-10">"Building a transparent future where every life is valued and every donation is a bridge to hope."</p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="#donate" class="bg-secondary text-primary font-black px-12 py-5 rounded-full uppercase tracking-tighter shadow-2xl hover:bg-white transition">Support a Family</a>
+            <a href="https://wa.me/6289520225851" target="_blank" class="bg-white/10 backdrop-blur-md text-white font-black px-12 py-5 rounded-full uppercase tracking-tighter border border-white/20 hover:bg-white/20 transition">Chat with us</a>
+        </div>
+    </div>
+</section>
+
+<section id="sectors" class="py-24 bg-muted">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="font-serif text-5xl text-primary italic mb-4">Sectors of Change</h2>
+            <p class="text-gray-500 uppercase tracking-widest text-[10px] font-black italic">Targeting poverty at the root</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border-b-4 border-primary hover:-translate-y-2 transition-all">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800" class="h-60 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="font-serif text-2xl text-primary italic mb-3">Education</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Covering school fees, books, and uniforms for orphan children.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border-b-4 border-secondary hover:-translate-y-2 transition-all">
+                <img src="https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=800" class="h-60 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="font-serif text-2xl text-primary italic mb-3">Clean Water</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Deep-well hand pumps and solar water projects in rural areas.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border-b-4 border-primary hover:-translate-y-2 transition-all">
+                <img src="https://images.unsplash.com/photo-1584515159005-408107954936?w=800" class="h-60 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="font-serif text-2xl text-primary italic mb-3">Emergency Aid</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Providing ration bags and medical assistance to widows and disabled.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="donate" class="py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <div class="bg-primary text-white rounded-[3.5rem] p-8 md:p-20 shadow-2xl relative overflow-hidden">
+            <h2 class="text-4xl font-serif text-center mb-12 italic">Join the Mission</h2>
+            
+            <div class="flex gap-2 bg-white/10 p-2 rounded-2xl mb-12">
+                <button onclick="togglePay('fiat')" id="btn-fiat" class="flex-1 py-5 rounded-xl font-black uppercase text-[10px] tab-active transition-all">PKR Accounts</button>
+                <button onclick="togglePay('crypto')" id="btn-crypto" class="flex-1 py-5 rounded-xl font-black uppercase text-[10px] bg-white/5 transition-all">Crypto Wallets</button>
+            </div>
+
+            <div id="account-list" class="grid gap-4 mb-12">
+                </div>
+
+            <form action="https://formspree.io/f/mbdwrprk" method="POST" enctype="multipart/form-data" class="bg-white p-8 md:p-12 rounded-[2rem] text-primary space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" name="Donor_Name" placeholder="Donor Name" required class="w-full p-5 bg-muted rounded-2xl outline-none border border-gray-100">
+                    <input type="number" name="Amount" placeholder="Amount Sent" required class="w-full p-5 bg-muted rounded-2xl outline-none border border-gray-100">
+                </div>
+                <div class="border-2 border-dashed border-gray-200 p-8 rounded-2xl text-center bg-muted/50 cursor-pointer hover:border-secondary" onclick="document.getElementById('proof').click()">
+                    <input type="file" name="Screenshot" id="proof" accept="image/*" class="hidden" required onchange="fileLabel.innerText = 'Attached: ' + this.files[0].name; fileLabel.style.color = '#0f3d2e'">
+                    <p id="fileLabel" class="text-primary font-bold uppercase text-[10px] tracking-widest italic">Upload Payment Proof *</p>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-6 rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:bg-secondary hover:text-primary transition-all">Submit Verification</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-24 bg-muted">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+        <h2 class="font-serif text-4xl text-primary italic mb-10">Get in Touch</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:border-secondary transition">
+                <i class="fab fa-whatsapp text-secondary text-3xl mb-4"></i>
+                <h4 class="font-black uppercase text-[10px] mb-2 tracking-widest text-gray-400">WhatsApp Support</h4>
+                <a href="https://wa.me/6289520225851" target="_blank" class="text-xl font-bold text-primary">+62 895-2022-5851</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:border-secondary transition">
+                <i class="fas fa-envelope text-secondary text-3xl mb-4"></i>
+                <h4 class="font-black uppercase text-[10px] mb-2 tracking-widest text-gray-400">Direct Email</h4>
+                <a href="mailto:brightfuturecharity8@gmail.com" class="text-lg font-bold text-primary break-all">brightfuturecharity8@gmail.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="admin" class="py-24 bg-gray-950 text-white">
+    <div class="container mx-auto px-6 max-lg text-center">
+        <div id="login-form">
+            <h2 class="font-serif text-2xl mb-8 italic text-secondary">Admin Login</h2>
+            <input type="password" id="admin-pin" placeholder="Enter PIN" class="w-full p-5 bg-gray-900 border border-gray-800 rounded-2xl mb-6 text-center outline-none">
+            <button onclick="handleLogin()" class="bg-white text-primary px-12 py-4 rounded-full font-black uppercase text-xs">Unlock</button>
+        </div>
+
+        <div id="admin-dashboard" class="hidden text-left space-y-6">
+            <h2 class="text-xl font-serif text-secondary mb-6 border-b border-gray-800 pb-4">Manage Accounts</h2>
+            <input type="text" id="up-easy" placeholder="Easypaisa #" class="w-full p-4 bg-gray-900 rounded-xl outline-none text-sm border border-gray-800 mb-2">
+            <input type="text" id="up-jazz" placeholder="JazzCash #" class="w-full p-4 bg-gray-900 rounded-xl outline-none text-sm border border-gray-800 mb-2">
+            <input type="text" id="up-bank" placeholder="Bank IBAN" class="w-full p-4 bg-gray-900 rounded-xl outline-none text-sm border border-gray-800 mb-2">
+            <input type="text" id="up-title" placeholder="Account Title" class="w-full p-4 bg-gray-900 rounded-xl outline-none text-sm border border-gray-800 mb-6">
+            <button onclick="saveChanges()" class="w-full bg-secondary text-primary py-4 rounded-xl font-black uppercase text-xs">Update Live Site</button>
+            <button onclick="location.reload()" class="w-full text-gray-500 text-[10px] mt-4">LOGOUT</button>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-primary text-white py-12 border-t border-white/5">
+    <div class="container mx-auto px-6 text-center">
+        <p class="text-white/40 text-[10px] uppercase font-bold tracking-[0.3em]">© 2026 Bright Future Charity | Jhang Sadar, Pakistan</p>
+    </div>
+</footer>
+
+<script>
+let currentTab = 'fiat';
+let wallets = {
+    easy: '0300-1234567', jazz: '0312-7654321', 
+    bank: 'PK12 MEZN 0000 1111 2222', title: 'Bright Future Foundation',
+    btc: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', eth: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
+};
+
+function handleLogin() {
+    if(document.getElementById('admin-pin').value === '1224') {
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('admin-dashboard').classList.remove('hidden');
+    } else { alert("Wrong PIN"); }
+}
+
+function togglePay(t) {
+    currentTab = t;
+    document.getElementById('btn-fiat').className = t === 'fiat' ? 'flex-1 py-5 rounded-xl font-black uppercase text-[10px] tab-active' : 'flex-1 py-5 rounded-xl font-black uppercase text-[10px] bg-white/5';
+    document.getElementById('btn-crypto').className = t === 'crypto' ? 'flex-1 py-5 rounded-xl font-black uppercase text-[10px] tab-active' : 'flex-1 py-5 rounded-xl font-black uppercase text-[10px] bg-white/5';
+    renderAccounts();
+}
+
+function renderAccounts() {
+    const list = document.getElementById('account-list');
+    if(currentTab === 'fiat') {
+        list.innerHTML = `
+            <div class="p-4 bg-white/10 rounded-xl flex justify-between items-center text-sm font-bold"><span>Easypaisa</span> <span>${wallets.easy}</span></div>
+            <div class="p-4 bg-white/10 rounded-xl flex justify-between items-center text-sm font-bold"><span>JazzCash</span> <span>${wallets.jazz}</span></div>
+            <div class="p-4 bg-white/10 rounded-xl text-center"><small class="text-secondary font-black uppercase text-[10px] tracking-widest">Bank Details</small><br><span class="text-sm font-bold">${wallets.bank}</span><br><small class="opacity-40 italic">${wallets.title}</small></div>
+        `;
+    } else {
+        list.innerHTML = `
+            <div class="p-4 bg-white/10 rounded-xl text-center text-[10px] break-all border border-white/5"><span class="text-secondary uppercase">Bitcoin</span><br>${wallets.btc}</div>
+            <div class="p-4 bg-white/10 rounded-xl text-center text-[10px] break-all border border-white/5"><span class="text-secondary uppercase">ETH/USDT</span><br>${wallets.eth}</div>
+        `;
+    }
+}
+
+function saveChanges() {
+    if(document.getElementById('up-easy').value) wallets.easy = document.getElementById('up-easy').value;
+    if(document.getElementById('up-jazz').value) wallets.jazz = document.getElementById('up-jazz').value;
+    if(document.getElementById('up-bank').value) wallets.bank = document.getElementById('up-bank').value;
+    if(document.getElementById('up-title').value) wallets.title = document.getElementById('up-title').value;
+    renderAccounts();
+    alert("Live numbers updated!");
+}
+
+renderAccounts();
+</script>
+</body>
+</html>
